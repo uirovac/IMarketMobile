@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>Intelligence Market</title>
+<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+<script>
+		//reset type=date inputs to text
+		$( document ).bind( "mobileinit", function(){
+			$.mobile.page.prototype.options.degradeInputs.date = true;
+		});	
+	</script>
+<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+<script src="../jquery-mobile/jQuery.ui.datepicker.js"></script>
+<script src="../jquery-mobile/jquery.ui.datepicker.mobile.js"></script>
+<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.ui.datepicker.mobile.css">
+</head> 
+<body> 
+
+<div data-role="page" id="principal" data-theme="b">
+	<div data-role="header">
+    	<a href="../index.html#procesos_competencia" rel="external">Atrás</a>
+		<h1>I-Market - Toma de Precio</h1>
+	</div>
+	<div data-role="content">
+    
+		<div data-role="fieldcontain">
+         	<label for="stock">Stock Visible o Conocido:</label>
+         	<input type="number" name="stock" id="stock" value=""  />
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="competidor">Identificar Competidor:</label>
+         	<select id="competidor" name="competidor">
+            	<option>Escoger Competidor</option>
+            	<option value="1">Competidor 1</option>
+                <option value="2">Competidor 2</option>
+            </select>
+		</div>
+        <div data-role="fieldcontain">
+        	  <label for="punto_de_venta">Identificar el Punto de Venta:</label>
+         	<select id="punto_de_venta" name="punto_de_venta">
+            	<option>Escoger Punto de Venta</option>
+            	<option value="1">Punto de Venta 1</option>
+                <option value="2">Punto de Venta 2</option>
+            </select>
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="precio">Fijar Precio:</label>
+         	<input type="number" name="precio" id="precio" value=""  />
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="fecha">Fecha de Captura de Precio:</label>
+         	<input type="text" name="fecha" id="fecha" value=""  />
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="producto">Identificar Producto:</label>
+         	<select id="producto" name="producto">
+            	<option>Escoger Producto</option>
+            	<option value="1">Producto 1</option>
+                <option value="2">Producto 2</option>
+            </select>
+		</div>
+	</div>
+
+	<div data-role="footer">
+		<h4>&nbsp;</h4>
+	</div>
+</div>
+</body>
+</html>

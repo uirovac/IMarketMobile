@@ -1,0 +1,85 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>Intelligence Market</title>
+<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+<script>
+		//reset type=date inputs to text
+		$( document ).bind( "mobileinit", function(){
+			$.mobile.page.prototype.options.degradeInputs.date = true;
+		});	
+	</script>
+<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.ui.datepicker.mobile.css">
+<script src="../jquery-mobile/jQuery.ui.datepicker.js"></script>
+<script src="../jquery-mobile/jquery.ui.datepicker.mobile.js"></script>
+<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+</head> 
+<body> 
+
+<div data-role="page" id="principal" data-theme="b">
+	<div data-role="header">
+    	<a href="../index.html#procesos_competencia" rel="external">Atrás</a>
+		<h1>I-Market - Facing</h1>
+	</div>
+	<div data-role="content">
+    
+		<div data-role="fieldcontain">
+            <a href="#fotografia" data-role="button" >Capturar Fotografía</a>
+		</div>
+ 	</div>
+
+	<div data-role="footer">
+		<h4>&nbsp;</h4>
+	</div>
+</div>
+
+<div data-role="page" id="fotografia"  data-theme="b">
+	<div data-role="header">
+    	<a href="#principal">Atrás</a>
+		<h1>Captura</h1>
+	</div>
+	<div data-role="content">
+        <div data-role="fieldcontain">
+         	<label for="descripcion">Descripcion:</label>
+         	<input type="text" name="descripcion" id="descripcion" value=""  />
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="fecha">Fecha Captura:</label>
+         	<input type="text" name="fecha" id="fecha" value=""  />
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="direccion">Direccion Captura:</label>
+         	<input type="text" name="direccion" id="direccion" value=""  />
+		</div>
+         <div data-role="fieldcontain">
+         	<label for="producto">Producto / Servicio:</label>
+         	<select name="producto" id="producto">
+            	<option>Elegir Producto / Servicio</option>
+                <option value="1">Producto 1</option>
+                <option value="2">Producto 2</option>
+       	  </select>
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="punto_venta">Punto de Venta:</label>
+         	<select name="punto_venta" id="punto_venta">
+            	<option>Elegir Punto de Venta</option>
+                <option value="1">Punto de Venta 1</option>
+                <option value="2">Punto de Venta 2</option>
+       	  </select>
+		</div>
+        <div data-role="fieldcontain">
+         	<button>Guardar</button>
+		</div>
+	</div>
+	<div data-role="footer">
+		<h4>&nbsp;</h4>
+	</div>
+</div>
+
+</body>
+</html>
+
+
+

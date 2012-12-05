@@ -1,0 +1,62 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>Intelligence Market</title>
+<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.css">
+<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+<script src="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.js"></script>
+</head> 
+<body> 
+
+<div data-role="page" id="principal" data-theme="b">
+	<div data-role="header">
+    	<a href="../index.html#procesos_competencia" rel="external">Atrás</a>
+		<h1>I-Market - Ofertas</h1>
+	</div>
+	<div data-role="content">
+    
+		<div data-role="fieldcontain">
+         	<label for="nombre">Nombre:</label>
+         	<input type="text" name="nombre" id="nombre" value=""  />
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="descripcion">Descripcion:</label>
+         	<input type="text" name="descripcion" id="descripcion" value=""  />
+		</div>
+       <div data-role="fieldcontain">
+         	<label for="fecha_inicio">Fecha Inicio:</label>
+            <input name="fecha_inicio" id="fecha_inicio" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}'>
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="fecha_termino">Fecha Término:</label>
+            <input name="fecha_termino" id="fecha_termino" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}'>
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="producto">Producto / Servicio:</label>
+         	<select id="producto" name="producto">
+            	<option selected>Escoger Producto</option>
+            	<option value="1">Producto 1</option>
+                <option value="2">Producto 2</option>
+            </select>
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="precio_base">Precio Base:</label>
+         	<input type="number" name="precio_base" id="precio_base" value=""  />
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="nuevo_precio">Nuevo Precio:</label>
+         	<input type="number" name="nuevo_precio" id="nuevo_precio" value=""  />
+		</div>
+	</div>
+
+	<div data-role="footer">
+		<h4>&nbsp;</h4>
+	</div>
+</div>
+</body>
+</html>
+
+
