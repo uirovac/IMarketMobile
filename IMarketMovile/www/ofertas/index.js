@@ -1,25 +1,15 @@
 //Librerias
-function getParamEdad (
-$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/81",
-		  { },
-		  function(data) {
-			$.each(data, function(key, val) {
-				$.each(val, function(key2, val2) {
-					$('#edad').append($('<option>', {value : val2.a1}).text(val2.a2));
-					
-					/*console.log(
-						"[" + key2 + "]" + 
-						"id : " + val2.a1 + 
-						" nombre : " + val2.a2 + 
-						" descripcion : " + val2.a3 + 
-						" padre : " + val2.a4 + 
-						" nivel : " + val2.a5 + 
-						" idioma : " + val2.a6);*/
-				});
-			});			    		
-		}
-	);
-	
+$("#principal").live('pageshow', function() {
+		$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p2s/querys/productos",{ },getProductos);
+	});
 
-	
-)
+function getProductos(data){
+		$.each(data, function(key, val) {
+			//alert (val);
+			$.each(val, function(key2, val2) {
+				//alert(val2);
+				$('#producto').append($('<option>', {value : val2[0].value}).text(val2[1].value));
+			});
+		});			    		
+}	
+

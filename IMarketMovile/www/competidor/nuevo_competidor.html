@@ -5,12 +5,13 @@
 <title>Intelligence Market</title>
 <script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
 <script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+<script src="nuevo_competidor.js"></script>
 <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
 </head> 
 <body> 
 
-<div data-role="page" id="principal">
-	<div data-role="header">
+<div data-role="page" id="principal" data-theme="b">
+	<div data-role="header" data-position="fixed">
     	<a href="index.html" rel="external">Atrás</a>
 		<h1>I-Market - Nuevo Competidor</h1>
 	</div>
@@ -25,12 +26,16 @@
          	<input type="text" name="descripcion" id="descripcion" value=""  />
 		</div>
         <div data-role="fieldcontain">
-         	<label for="nombre">Establecimiento:</label>
-         	<input type="text" name="establecimiento" id="establecimiento" value=""  />
+         	<label for="punto_de_venta">Punto de Venta:</label>
+         	<select id="punto_de_venta" name="punto_de_venta">
+            	<option selected>Escoger Establecimiento</option>
+            </select>
 		</div>
         <div data-role="fieldcontain">
-         	<label for="nombre">Productos/Servicios:</label>
-         	<input type="text" name="productos_servicios" id="productos_servicios" value=""  />
+         	<label for="nombre">Producto / Servicio</label>
+         	<select id="producto_servicio" name="producto_servicio">
+            	<option value="-1" selected>Escoger Producto / Servicio</option>
+                            </select>
 		</div>
         <div data-role="fieldcontain">
          	<label for="nombre">Representante Legal:</label>
@@ -42,12 +47,41 @@
 		</div>
         <div data-role="fieldcontain">
          	<label for="nombre">Ubicación Geográfica:</label>
-         	<input type="text" name="ubicacion_geografica" id="ubicacion_geografica" value=""  />
+         	<div data-role="collapsible-set">
+				<div data-role="collapsible" data-theme="b" data-content-theme="d">
+					<h3>Abrir</h3>
+					<div data-role="fieldcontain">
+                        <label for="calle">Calle:</label>
+                        <input type="text" name="calle" id="calle" value=""  />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="numero">Número:</label>
+                        <input type="text" name="numero" id="numero" value=""  />	
+                    </div>
+                    <div data-role="fieldcontain">
+                          <label for="depto">Depto:</label>
+                        <input type="text" name="depto" id="depto" value=""  />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="comuna">Comuna:</label>
+                        <input type="text" name="comuna" id="comuna" value=""  />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="region">Región:</label>
+                        <input type="text" name="region" id="region" value=""  />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="pais">País:</label>
+                        <input type="text" name="pais" id="pais" value=""  />
+                    </div>
+                 </div>
+             </div>
 		</div>
 	</div>
 
-	<div data-role="footer">
+	<div data-role="footer" data-position="fixed" class="ui-bar">
 		<h4>&nbsp;</h4>
+    	<input type="button" name="guardar" value="Guardar" class="ui-footer ui-btn-right"/>
 	</div>
 </div>
 

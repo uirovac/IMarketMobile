@@ -8,11 +8,11 @@
 <script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
 <script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
 <script src="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.js"></script>
-
+<script src="nuevo_producto.js"></script>
 </head> 
 <body> 
 
-<div data-role="page" id="page" data-theme="b">
+<div data-role="page" id="principal" data-theme="b">
 	<div data-role="header">
     	<a href="index.html" rel="external">Atrás</a>
 		<h1>I-Market - Nuevo Producto</h1>
@@ -79,11 +79,29 @@
 		</div>
         <div data-role="fieldcontain">
          	<label for="complementarios">Complementarios:</label>
-         	<input type="text" name="complementarios" id="complementarios" value=""  />
+         	<div data-role="collapsible-set">
+				<div data-role="collapsible"  data-theme="b" data-content-theme="d" id="complementarios">
+					<h3>Abrir</h3>
+					
+    					<fieldset data-role="controlgroup">
+
+   						</fieldset>
+					
+                 </div>
+             </div>
 		</div>
         <div data-role="fieldcontain">
          	<label for="sustitutos">Sustitutos:</label>
-         	<input type="text" name="sustitutos" id="sustitutos" value=""  />
+         	<div data-role="collapsible-set">
+				<div data-role="collapsible"  data-theme="b" data-content-theme="d" id="sustitutos">
+					<h3>Abrir</h3>
+					
+    					<fieldset data-role="controlgroup">
+
+   						</fieldset>
+					
+                 </div>
+             </div>
 		</div>
         <div data-role="fieldcontain">
          	<label for="origen">Origen del Producto:</label>

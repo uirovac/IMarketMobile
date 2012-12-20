@@ -1,28 +1,99 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Intelligence market</title>
-<script src="jquery-mobile/jquery-1.8.3.min.js"></script>
-<script src="jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
-<link rel="stylesheet" type="text/css" href="jquery-mobile/jquery.mobile-1.2.0.min.css">
-</head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo by jtsage</title>
+  
+ <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css"> 
+  <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.simpledialog.min.css">
+<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+<script src="../jquery-mobile/jquery.mobile.simpledialog2.min.js"></script>
+<script type="text/javascript">
+			if (!!window.EventSource) {
+				var eventSrc = new EventSource('http://facility.ejedigital.cl/facility/dispatcher?c=DisplayMessage&m=daily' );
+				eventSrc.addEventListener('message',
+					function(e) {
+						
+						var mensaje = "";
+						var data = JSON.parse(e.data);
+						
+						$('html').simpledialog2({
+   						 mode: 'blank',
+    					headerText: data.asunto,
+    					headerClose: true,
+    					dialogAllow: false,
+    					dialogForce: false,
+    					blankContent :
+							'<div data-role="content" data-theme="c">'+
+							'	<h1>'+ data.asunto + '</h1>'+
+							'	<p>'+ data.msg +'</p>'+
+							'</div>' 
+      						/*"<ul data-role='listview'><li>Some</li><li>List</li><li>Items</li></ul>"+
+      						// NOTE: the use of rel="close" causes this button to close the dialog.
+      						"<a rel='close' data-role='button' href='#'>Close</a>"*/
+  						});
+						
+						
+						/*var mensaje = "<br><p><strong>" + data.asunto + "</p></strong>";
+						mensaje += "<p>" + data.msg + "</p>";
+						if(mensaje != "") {
+							$("#index").stop().animate({"opacity": "0.7"}, "high");
+							$("#contenido").append(
+								"<div class='fondo' id='fnd" + $.trim(data.id) + "' style='z-index:" +  $.trim(data.id) + "' >" + 
+									"<div class='texto' id='txt" + $.trim(data.id) + "'  >" + 
+										(mensaje) +
+									"</div>" + 		
+									"<div class='boton' id='btn" + $.trim(data.id) + "'  >" +
+										"<a href='#' id='close' data-role='button' data-theme='b' onclick=aclose('" + $.trim(data.id) + "')> " +
+											"<img src='images/close.png' >" +
+										"</a>" +										
+									"</div>" +  
+								"</div>");  
+						$("#message").show("slow");
+						}*/
+					}, false);
+				eventSrc.addEventListener('open', function(e) { }, false);
+				eventSrc.addEventListener('error', 
+					function(e) {
+						if (e.readyState == EventSource.CLOSED) {
+							//realizar tracking del usuario
+							//document.getElementById("contenido").innerHTML = "conexion cerrada";
+						}
+					}, false);				
+			}
+			else {
+				//document.getElementById("contenido").innerHTML = "Funcionalidad no soportada por el browser";
+			}
+		</script>
+<!--<script type='text/javascript'>
+$(window).load(function(){
+$('html').simpledialog2({
+    mode: 'blank',
+    headerText: 'Some Stuff',
+    headerClose: true,
+    dialogAllow: true,
+    dialogForce: true,
+    blankContent : 
+      "<ul data-role='listview'><li>Some</li><li>List</li><li>Items</li></ul>"+
+      // NOTE: the use of rel="close" causes this button to close the dialog.
+      "<a rel='close' data-role='button' href='#'>Close</a>"
+  });
+
+}); 
+
+</script>-->
+
+
+</head>
 <body>
-
-<div data-role="dialog" id="modificacion_precio">
-	
-		<div data-role="header" data-theme="d">
-			<h1>Dialog</h1>
-
-		</div>
-
-		<div data-role="content" data-theme="c">
-			<h1>Modificacion de Precio</h1>
-			<p>This is a regular page, styled as a dialog. To create a dialog, just link to a normal page and include a transition and <code>data-rel="dialog"</code> attribute.</p>
-			<a href="dialog/index.html" data-role="button" data-rel="back" data-theme="b">Aceptar</a>       
-		</div>
-	</div>
-
-
+  <ul data-role="listview">
+    <li><a href="#">foo</a></li>
+    <li><a href="#">bar</a></li>
+    <li><a href="#">baz</a></li>
+</ul>
+  
 </body>
+
+
 </html>

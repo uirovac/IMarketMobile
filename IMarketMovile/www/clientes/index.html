@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>Intelligence Market</title>
-<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
-<script src="index.js"></script>
-<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+<script src="index.js"></script>
 </head> 
 <body> 
 
@@ -60,193 +60,8 @@
 					</div>
         			<div data-role="fieldcontain">
         	<label for="tipo_segmento">Tipo Segmento:</label>
-    		<div data-role="collapsible-set">
-				<div data-role="collapsible">
-					<h3>Geográfica</h3>
-					<div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Región</legend>
-         					<input type="radio" name="region" id="region_1" value="1" />
-         					<label for="region_1">Norte</label>
-        					<input type="radio" name="region" id="region_2" value="2"  />
-         					<label for="region_2">Sur</label>
-                            <input type="radio" name="region" id="region_3" value="3"  />
-         					<label for="region_3">Este</label>
-                            <input type="radio" name="region" id="region_4" value="4"  />
-         					<label for="region_4">Oeste</label>
-   						 </fieldset>
-					</div>
-                    <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Tramos de Poblacion</legend>
-         					<input type="radio" name="tramo" id="tramo_1" value="1" />
-         					<label for="tramo_1">&gt; 1000</label>
-        					<input type="radio" name="tramo" id="tramo_2" value="2"  />
-         					<label for="tramo_2">&gt; 2000</label>
-  						 </fieldset>
-					</div>
-                    <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Densidad</legend>
-         					<input type="radio" name="densidad" id="densidad_1" value="1" />
-         					<label for="densidad_1">Rural</label>
-        					<input type="radio" name="densidad" id="densidad_2" value="2"  />
-         					<label for="densidad_2">Urbano</label>
-  						 </fieldset>
-					</div>
-                    <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Clima</legend>
-         					<input type="radio" name="clima" id="clima_1" value="1" />
-         					<label for="clima_1">Cálido</label>
-        					<input type="radio" name="clima" id="clima_2" value="2"  />
-         					<label for="clima_2">Templado</label>
-  						 </fieldset>
-					</div>
-				</div>
-				<div data-role="collapsible">
-					<h3>Demográfica</h3>
-					<div data-role="fieldcontain">
-         				
-    						<label for="edad">Edad</label>
-         					<select id="edad" name="edad">
-                            </select>
-   						
-					</div>
-                    <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Sexo</legend>
-         					<input type="radio" name="sexo" id="sexo_1" value="1" />
-         					<label for="sexo_1">Masculino</label>
-        					<input type="radio" name="sexo" id="sexo_2" value="2"  />
-         					<label for="sexo_2">Femenino</label>
-  						 </fieldset>
-					</div>
-                    <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Tamaño Familiar</legend>
-         					<input type="radio" name="familia" id="familia_1" value="1" />
-         					<label for="familia_1">1</label>
-        					<input type="radio" name="familia" id="familia_2" value="2"  />
-         					<label for="familia_2">2</label>
-                            <input type="radio" name="familia" id="familia_3" value="3"  />
-         					<label for="familia_3">3</label>
-                            <input type="radio" name="familia" id="familia_4" value="4"  />
-         					<label for="familia_4">4</label>
-                            <input type="radio" name="familia" id="familia_5" value="5"  />
-         					<label for="familia_5">5</label>
-                             <input type="radio" name="familia" id="familia_6" value="6"  />
-         					<label for="familia_6">+</label>
-   						 </fieldset>
-					</div>
-                    <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Estado Civil</legend>
-         					<input type="radio" name="ecivil" id="ecivil_1" value="1" />
-         					<label for="ecivil_1">Soltero</label>
-        					<input type="radio" name="ecivil" id="ecivil_2" value="2"  />
-         					<label for="ecivil_2">Casado</label>
-                            <input type="radio" name="ecivil" id="ecivil_3" value="3"  />
-         					<label for="ecivil_3">Viudo</label>
-                            <input type="radio" name="ecivil" id="ecivil_4" value="4"  />
-         					<label for="ecivil_4">Divorciado</label>
-   						 </fieldset>
-					</div>
-                    <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Talla</legend>
-         					<input type="radio" name="talla" id="talla_1" value="1" />
-         					<label for="talla_1">&gt; 1,50 mts</label>
-        					<input type="radio" name="talla" id="talla_2" value="2"  />
-         					<label for="talla_2">&gt; 1,60 mts</label>
-                            <input type="radio" name="talla" id="talla_3" value="3"  />
-         					<label for="talla_3">&gt; 1,70 mts</label>
-                            <input type="radio" name="talla" id="talla_4" value="4"  />
-         					<label for="talla_4">&gt; 1,80 mts</label>
-                             <input type="radio" name="talla" id="talla_5" value="5"  />
-         					<label for="talla_5">&gt; 1,90 mts</label>
-   						 </fieldset>
-					</div>
-                    <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Peso</legend>
-         					<input type="radio" name="peso" id="peso_1" value="1" />
-         					<label for="peso_1">&gt; 60 kl.</label>
-        					<input type="radio" name="peso" id="peso_2" value="2"  />
-         					<label for="peso_2">&gt; 70 kl.</label>
-                            <input type="radio" name="peso" id="peso_3" value="3"  />
-         					<label for="peso_3">&gt; 80 kl.</label>
-                            <input type="radio" name="peso" id="peso_4" value="4"  />
-         					<label for="peso_4">&gt; 90 kl.</label>
-                             <input type="radio" name="peso" id="peso_5" value="5"  />
-         					<label for="peso_5">&gt; 100 kl.</label>
-   						 </fieldset>
-					</div>
-                    <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Nacionalidad</legend>
-         					<input type="radio" name="nacionalidad" id="nacionalidad_1" value="1" />
-         					<label for="nacionalidad_1">Chilena</label>
-        					<input type="radio" name="nacionalidad" id="nacionalidad_2" value="2"  />
-         					<label for="nacionalidad_2">Argentina</label>
-  						 </fieldset>
-					</div>
-				</div>
-                <div data-role="collapsible">
-					<h3>Socioeconómica</h3>
-					<div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Ingresos</legend>
-         					<input type="radio" name="ingreso" id="ingreso_1" value="1" />
-         					<label for="ingreso_1">&gt; 100.000</label>
-        					<input type="radio" name="ingreso" id="ingreso_2" value="2"  />
-         					<label for="ingreso_2">&gt; 500.000</label>
-                            <input type="radio" name="ingreso" id="ingreso_3" value="3"  />
-         					<label for="ingreso_3">&gt; 1.000.000</label>
-                            <input type="radio" name="ingreso" id="ingreso_4" value="4"  />
-         					<label for="ingreso_4">&gt; 2.000.000</label>
-  						 </fieldset>
-					</div>
-                    <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Clase Social</legend>
-         					<input type="radio" name="csocial" id="csocial_1" value="1" />
-         					<label for="csocial_1">Indigente</label>
-        					<input type="radio" name="csocial" id="csocial_2" value="2"  />
-         					<label for="csocial_2">ABC1</label>
-                            <input type="radio" name="csocial" id="csocial_3" value="3"  />
-         					<label for="csocial_3">magnate</label>
-                            <input type="radio" name="csocial" id="csocial_4" value="4"  />
-         					<label for="csocial_4">??</label>
-  						 </fieldset>
-					</div>
-                     <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Profesión</legend>
-         					<input type="radio" name="profesion" id="profesion_1" value="1" />
-         					<label for="profesion_1">Empleado</label>
-        					<input type="radio" name="profesion" id="profesion_2" value="2"  />
-         					<label for="profesion_2">Funcionario</label>
-                            <input type="radio" name="profesion" id="profesion_3" value="3"  />
-         					<label for="profesion_3">Ejecutivo</label>
-                            <input type="radio" name="profesion" id="profesion_4" value="4"  />
-         					<label for="profesion_4">Sin cualificar</label>
-  						 </fieldset>
-					</div>
-                     <div data-role="fieldcontain">
-         				<fieldset data-role="controlgroup" data-type="horizontal" >
-    						<legend>Nivel de Estudios</legend>
-         					<input type="radio" name="estudios" id="estudios_1" value="1" />
-         					<label for="estudios_1">Básico</label>
-        					<input type="radio" name="estudios" id="estudios_2" value="2"  />
-         					<label for="estudios_2">Medio</label>
-                            <input type="radio" name="estudios" id="estudios_3" value="3"  />
-         					<label for="estudios_3">Universitario</label>
-                            <input type="radio" name="estudios" id="estudios_4" value="4"  />
-         					<label for="estudios_4">Sin cualificar</label>
-  						 </fieldset>
-					</div>
-				</div>
+    		<div data-role="collapsible-set" id="segmento">
+				
        		</div>
            </div> 
           </div>
@@ -287,9 +102,7 @@
         <div data-role="fieldcontain">
          	<label for="producto">Producto / Servicio:</label>
          	<select id="producto" name="producto">
-            	<option>Escoger Producto</option>
-            	<option value="1">Producto 1</option>
-                <option value="2">Producto 2</option>
+            	<option selected>Escoger Producto / Servicio</option>
             </select>
 		</div>
 	</div>

@@ -6,6 +6,7 @@
 <script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
 <script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+<script src="dcc.js"></script>
 </head> 
 <body> 
 
@@ -14,11 +15,18 @@
     	<a href="index.html#competencia" rel="external">Atrás</a>
 		<h1>I-Market - DCC</h1>
 	</div>
-	<div data-role="content">
-    
-		<div data-role="fieldcontain">
+	<div data-role="content" id="contenido">
+    	<div data-role="fieldcontain">
+         	<label for="competidor">Competidor:</label>
+         	<select name="competidor" id="competidor">
+            	<option selected>Escoger Competidor</option>
+         	  </select>
+		</div>
+		<!--<div data-role="fieldcontain">
          	<label for="mts2">Mts2:</label>
-         	<input type="number" name="mts2" id="mts2" value=""  />
+         	<select id="mts2">
+            	<option selected></option>
+            </select>
 		</div>
         <div data-role="fieldcontain">
          	<label for="trabajadores">Trabajadores:</label>
@@ -34,7 +42,7 @@
                 <input type="checkbox" name="acercamiento" id="acercamiento_3" class="custom" />
 	   			<label for="acercamiento_3">Metro</label>
    			</fieldset>
-		</div>
+		</div>-->
 	</div>
 	<div data-role="footer">
 		<h4>&nbsp;</h4>

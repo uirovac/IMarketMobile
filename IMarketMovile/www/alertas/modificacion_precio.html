@@ -3,18 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>Intelligence Market</title>
-<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
-<script>
-		//reset type=date inputs to text
-		$( document ).bind( "mobileinit", function(){
-			$.mobile.page.prototype.options.degradeInputs.date = true;
-		});	
-	</script>
-<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.ui.datepicker.mobile.css">
-<script src="../jquery-mobile/jQuery.ui.datepicker.js"></script>
-<script src="../jquery-mobile/jquery.ui.datepicker.mobile.js"></script>
 <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+<script src="modificacion_precio.js"></script>
 </head> 
 <body> 
 
@@ -32,17 +24,13 @@
          <div data-role="fieldcontain">
          	<label for="producto">Producto / Servicio:</label>
          	<select name="producto" id="producto">
-            	<option selected>Elegir Producto / Servicio</option>
-                <option value="1">Producto 1</option>
-                <option value="2">Producto 2</option>
+            	<option selected>Escoger Producto / Servicio</option>
        	  </select>
 		</div>
           <div data-role="fieldcontain">
-         	<label for="competencia">Competencia:</label>
-         	<select name="competencia" id="competencia">
-            	<option selected>Elegir Competencia</option>
-                <option value="1">Competencia 1</option>
-                <option value="2">Competencia 2</option>
+         	<label for="competidor">Competidor:</label>
+         	<select name="competidor" id="competidor">
+            	<option selected>Escoger Competidor</option>
        	  </select>
 		</div>
 	</div>

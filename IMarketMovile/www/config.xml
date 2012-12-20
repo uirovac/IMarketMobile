@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
-    id        = "cl.ejedigital.mobile"
+    id        = "com.phonegap.example"
     version   = "1.0.0">
-	<name>Intelligence Market Mobile</name>
-	<description>App for sales force.</description>
-	<author href="http://www.ejedigital.cl" email="jcastro@ejedigital">Soporte Ejedigital</author>
-	<preference name="orientation" value="portrait" /> 
-	<preference name="phonegap-version" value="1.5.0" />
-	<preference name="fullscreen" value="true" />
-	<icon src="icons/icon.png" width="36" height="36" />
+
+<name>PhoneGap Build Application</name>
+
+<description>
+A simple PhoneGap Build application.
+</description>
+
+<author href="https://example.com" email="you@example.com">
+Your Name
+</author>
+
+<preference name="orientation" value="portrait" /> 
+
 </widget>
