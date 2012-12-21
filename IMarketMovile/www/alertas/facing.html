@@ -3,22 +3,68 @@
 <head>
 <meta charset="utf-8">
 <title>Intelligence Market</title>
+<script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
 <script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
 <script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAyzIvlogIlkdk6qqXgPcqGRRrb41JoWUZrahluOk81y-6F6GuWhTRTI6lSA2xEMpMhmGUIE4uTwXgRA" ></script>
+<script type="text/javascript" charset="utf-8" src="js/geolocation.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/camera.js"></script>
+<script type="text/javascript" charset="utf-8">
+		var pictureSource; 
+		var destinationType;
+		document.addEventListener("deviceready", onDeviceReady, false);
+		function onDeviceReady() {
+			var posLatitud = null;
+			var posLongitud = null;
+			pictureSource = navigator.camera.PictureSourceType;
+			destinationType = navigator.camera.DestinationType;
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		}
+		
+		function onSuccess(position) {
+			posLatitud = position.coords.latitude;
+			posLongitud = position.coords.longitude;
+			cargaPosicionActual();
+		}
+
+		function onError(error) {
+			alert("Intente realizar nuevamente esta operación.  Si el problema persiste, busque un sitio con mejor recepción");
+		}
+		var map = null;
+	</script>
 <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
 </head> 
-<body> 
+<body onunload="GUnload()"> 
 
-<div data-role="page" id="principal">
+<div data-role="page" id="principal" data-theme="b">
 	<div data-role="header">
-    	<a href="index.html#competencia" rel="external">Atrás</a>
-		<h1>I-Market - Facing</h1>
+    	<a href="competencia.html" rel="external">Atrás</a>
+		<h1>IMarket - Facing</h1>
 	</div>
 	<div data-role="content">
     
 		<div data-role="fieldcontain">
-            <a href="#fotografia" data-role="button" >Capturar Fotografía</a>
+            <a href="#" data-role="button" onclick="capturePhotoEdit(Camera.PictureSourceType.CAMERA);">Capturar Fotografía</a>
 		</div>
+        <div data-role="fieldcontain">
+           <fieldset>
+    		<div data-role="collapsible-set">
+				<div data-role="collapsible"  data-theme="b" data-content-theme="d">
+					<h3>Abrir</h3>
+					<div data-role="fieldcontain">
+         				<img style="display: none; width: 100px; height: 100px;" id="smallImage" src="" />
+					</div>
+                </div>
+            </div>
+            <input type="hidden" id="dirtext" name="dirtext" value="">
+        	 <div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em; width:400px;height:400px" >
+					<!--<div id="map_canvas" style="height:350px;"></div>-->
+                    <!--<div id="divMapa" style="border-style:ridge;width:400px;height:400px">-->
+					<div id="direccion" style="position:relative;background:#000;color:#fff;opacity:0.6;text-align:center;font:12px/14px Arial;width:100%"></div>
+					<div id="map" align="center" style="position:relative;width:100%;height:96%"></div>
+			</div>
+            </fieldset>
+        </div>
  	</div>
 
 	<div data-role="footer">

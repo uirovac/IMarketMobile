@@ -15,7 +15,7 @@
 <div data-role="page" id="principal" data-theme="b">
 	<div data-role="header">
     	<a href="../index.html#procesos_competencia" rel="external">Atrás</a>
-		<h1>I-Market - Promociones</h1>
+		<h1>IMarket - Promociones</h1>
 	</div>
 	<div data-role="content">
     
@@ -35,6 +35,18 @@
          	<label for="fecha_termino">Fecha Término:</label>
             <input name="fecha_termino" id="fecha_termino" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}'>
 		</div>
+        <div data-role="fieldcontain">
+         	<label for="local">Local:</label>
+         	<select id="local" name="punto_de_venta">
+            	<option selected>Escoger Local</option>
+            </select>
+		</div>
+        <div data-role="fieldcontain">
+        	  <label for="punto_de_venta"> Punto de Venta:</label>
+         	<select id="punto_de_venta" name="punto_de_venta">
+            	<option>Escoger Punto de Venta</option>
+            </select>
+		</div>		
        <div data-role="fieldcontain">
          	<label for="producto">Producto / Servicio:</label>
          	<div data-role="collapsible-set">

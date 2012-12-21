@@ -5,40 +5,52 @@
 <title>Intelligence Market</title>
 <script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
 <script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+<script src="comprador.js"></script>
 <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
-<script src="ofertas.js"></script>
 </head> 
 <body> 
 
 <div data-role="page" id="principal" data-theme="b">
 	<div data-role="header">
     	<a href="competencia.html" rel="external">Atrás</a>
-		<h1>IMarket - Ofertas</h1>
+		<h1>IMarket - Alertas</h1>
 	</div>
 	<div data-role="content">
-    
-		<div data-role="fieldcontain">
-         	<label for="precio"> Precio:</label>
-         	<input type="number" name="precio" id="precio" value=""  />
+    	<div data-role="fieldcontain">
+         	<label for="afluencia">Afluencia:</label>
+         	<input type="number" name="afluencia" id="afluencia" value=""  />
 		</div>
          <div data-role="fieldcontain">
-         	<label for="producto">Producto / Servicio:</label>
-         	<select name="producto" id="producto">
-            	<option selected>Escoger Producto / Servicio</option>
-       	  </select>
-		</div>
+        	<label for="segmento">Tipo Segmento:</label>
+    		<div data-role="collapsible-set" id="segmento">
+       		</div>
+          </div>
           <div data-role="fieldcontain">
+         	<label for="producto">Producto / Servicio</label>
+         	<select id="producto" name="producto">
+            	<option selected>Escoger Producto / Servicio</option>
+             </select>
+		</div>
+        <div data-role="fieldcontain">
+         	<label for="cantidad">Cantidad:</label>
+         	<input type="number" name="cantidad" id="cantidad" value=""  />
+		</div>
+        <div data-role="fieldcontain">
          	<label for="competidor">Competidor:</label>
          	<select name="competidor" id="competidor">
             	<option selected>Escoger Competidor</option>
-         	  </select>
+       	  </select>
 		</div>
+        
+    
+       
+	
 	</div>
+
 	<div data-role="footer">
 		<h4>&nbsp;</h4>
 	</div>
 </div>
+
 </body>
 </html>
-
-
