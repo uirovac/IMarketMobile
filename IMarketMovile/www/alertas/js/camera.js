@@ -11,8 +11,8 @@ onFail = function(message) {
 }
 	
 onPhotoDataSuccess = function(imageData) {
-	var smallImage = document.getElementById('smallImage');
-	smallImage.style.display = 'block';
-	smallImage.src = "data:image/jpeg;base64," + imageData;
-	myImage = imageData;
+	var capturefacing = document.getElementById('capturefacing');
+	capturefacing.style.display = 'block';
+	capturefacing.src = "data:image/jpeg;base64," + imageData;
+	facingImage = imageData;
 }

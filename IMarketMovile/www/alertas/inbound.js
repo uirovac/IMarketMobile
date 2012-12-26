@@ -1,13 +1,13 @@
 eventSrc.addEventListener('message',
-//Se rescatan los mensajes enviados desde el servidor hacia la pagina en formato json
-					function(e) {
-						var mensaje = "";
-						var data = JSON.parse(e.data);
-						var mensaje = "<br><p><strong>" + data.asunto + "</p></strong>";
-						mensaje += "<p>" + data.msg + "</p>";
-						if(mensaje != "") {
-							$("#index").stop().animate({"opacity": "0.7"}, "high");
-							$("#contenido").append(
+		//Se rescatan los mensajes enviados desde el servidor hacia la pagina en formato json
+		function(e) {
+			var mensaje = "";
+			var data = JSON.parse(e.data);
+			var mensaje = "<br><p><strong>" + data.asunto + "</p></strong>";
+			mensaje += "<p>" + data.msg + "</p>";
+			if(mensaje != "") {
+				$("#index").stop().animate({"opacity": "0.7"}, "high");
+				$("#contenido").append(
 								"<div class='fondo' id='fnd" + $.trim(data.id) + "' style='z-index:" +  $.trim(data.id) + "' >" + 
 									"<div class='texto' id='txt" + $.trim(data.id) + "'  >" + 
 										(mensaje) +
@@ -18,18 +18,13 @@ eventSrc.addEventListener('message',
 										"</a>" +										
 									"</div>" +  
 								"</div>");  
-						$("#message").show("slow");
-						}
-					}, false);
-				eventSrc.addEventListener('open', function(e) { alert("registrando evento") }, false);
-				eventSrc.addEventListener('error', 
-					function(e) {
-						if (e.readyState == EventSource.CLOSED) {
-							//realizar tracking del usuario
-							document.getElementById("contenido").innerHTML = "conexion cerrada";
-						}
-					}, false);				
+				$("#message").show("slow");
 			}
-			else {
-				document.getElementById("contenido").innerHTML = "Funcionalidad no soportada por el browser";
-			}
+		}, false);
+eventSrc.addEventListener('open', function(e) { alert("registrando evento") }, false);
+eventSrc.addEventListener('error', 
+			function(e) {
+				if (e.readyState == EventSource.CLOSED) {
+					document.getElementById("contenido").innerHTML = "conexion cerrada";
+				}
+			}, false);				

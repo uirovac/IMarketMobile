@@ -62,7 +62,6 @@ cargaPosicionActual = function () {
 		var bounds = new GLatLngBounds();
 		geocoder = new GClientGeocoder();
 		geocoder.getLocations(posicion, mostrarDireccion);
-			
 		var point1 = new GLatLng(posLatitud,posLongitud);
 		var address1 = '<b>Mi ubicacion</b>';
 		var marker1 = marcarPosicion(point1, address1);
