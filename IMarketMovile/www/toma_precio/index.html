@@ -1,64 +1,91 @@
 <!DOCTYPE html> 
 <html>
-<head>
-<meta charset="utf-8">
-<title>Intelligence Market</title>
-<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
-<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
-<script src="index.js"></script>
-</head> 
-<body> 
-
-<div data-role="page" id="principal" data-theme="b">
-	<div data-role="header">
-    	<a href="../index.html#procesos_competencia" rel="external">Atrás</a>
-		<h1>IMarket - Toma de Precio</h1>
-	</div>
-	<div data-role="content">
-    
-		<div data-role="fieldcontain">
-         	<label for="stock">Stock:</label>
-         	<input type="number" name="stock" id="stock" value=""  />
+	<head>
+		<meta charset="utf-8">
+		<title>IMarket</title>
+		<script type="text/javascript" charset="utf-8" src="../cordova-1.9.0.js"></script>		
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="../jquery-mobile/jquery.chained.js"></script>
+		<script src="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.js"></script>
+		<script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+		<script src="../js/camera.js"></script>
+		<script src="index.js"></script>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jqm-icon-pack-2.1.2-fa.css">		
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">
+	</head> 
+	<body> 
+		<div data-role="page" id="principal" data-theme="b">
+			<div data-role="header">
+		    	<a href="../index.html#procesos_competencia" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>IMarket - Toma de Precio</h1>
+		    	<a href="../index.html" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<div data-role="content">
+				<form method="post" id="formulario">			
+			        <div data-role="fieldcontain">
+			         	<label for="competidor">Competidor:</label>
+			         	<select id="competidor" name="competidor" class="required">
+			            	<option selected>Escoger Competidor</option>
+			            </select>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="local">Cadena:</label>
+			         	<select id="local" name="local" class="required">
+			            	<option selected>Escoger Cadena</option>
+			            </select>
+					</div>
+			        <div data-role="fieldcontain">
+			        	<label for="punto_de_venta"> Punto de Venta:</label>
+			         	<select id="punto_de_venta" name="punto_de_venta" class="required">
+			            	<option selected>Escoger Punto de Venta</option>
+			            </select>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="producto"> Producto / Servicio:</label>
+			         	<select id="producto" name="producto" class="required">
+			            	<option selected>Escoger Producto / Servicio</option>
+			            </select>
+					</div>
+					<div data-role="fieldcontain">
+			         	<label for="stock">Stock:</label>
+			         	<input type="number" name="stock" id="stock" value="" class="required" />
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="precio"> Precio:</label>
+			         	<input type="number" name="precio" id="precio" value="" class="required" />
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="fecha">Fecha de Captura de Precio:</label>
+			            <input name="fecha" id="fecha" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}' class="required">
+					</div>
+			        <div data-role="fieldcontain" data-inline="true" style="display:inline;">
+		                <div data-role="controlgroup" data-type="horizontal" style="display:inline;">
+		                    <a href="#" data-role="button" onclick="capturePhotoEdit(Camera.PictureSourceType.CAMERA);">Captura</a>
+		                </div>
+						<a href="#fotografia" rel="external" data-role="button" class="ui-btn-right" data-iconpos="notext" data-icon="picture">Home</a>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" class="ui-bar">
+				<h4>&nbsp;</h4>
+		    	<input type="button" id="setDataToServer" name="guardar" value="Guardar" class="ui-footer ui-btn-right"/>
+			</div>
 		</div>
-        <div data-role="fieldcontain">
-         	<label for="competidor">Competidor:</label>
-         	<select id="competidor" name="competidor">
-            	<option selected>Escoger Competidor</option>
- 
-            </select>
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="local">Local:</label>
-         	<select id="local" name="local">
-            	<option selected>Escoger Local</option>
-            </select>
-		</div>
-        <div data-role="fieldcontain">
-        	  <label for="pto_de_vta"> Punto de Venta:</label>
-         	<select id="pto_de_vta" name="pto_de_vta">
-            	<option selected>Escoger Punto de Venta</option>
-            </select>
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="precio"> Precio:</label>
-         	<input type="number" name="precio" id="precio" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="fecha">Fecha de Captura de Precio:</label>
-         	<input type="text" name="fecha" id="fecha" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="producto"> Producto / Servicio:</label>
-         	<select id="producto" name="producto">
-            	<option selected>Escoger Producto / Servicio</option>
-            </select>
-		</div>
-	</div>
-
-	<div data-role="footer" data-position="fixed">
-		<h4>&nbsp;</h4>
-	</div>
-</div>
-</body>
+		<div data-role="page" id="fotografia" data-theme="b">
+			<div data-role="header">
+		    	<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>IMarket - Fotografia</h1>
+			</div>
+			<div data-role="content">	
+				<img style="display: none; width: 100px; height: 100px; text-align:center" id="capturefacing" src="" />
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h4>&nbsp;</h4>
+			</div>
+		</div>		
+	</body>
 </html>

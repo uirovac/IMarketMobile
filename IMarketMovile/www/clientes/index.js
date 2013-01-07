@@ -4,36 +4,60 @@ $("#principal").live('pageinit', function() {
 		$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/59",{ },getGeografica);
 		$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/80",{ },getDemografica);
 		$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/143",{ },getSocioeconomica);
-	});
+		
+		$("#setDataToServer").click(
+			function() {
+				if ($('#formulario').validate({
+					errorPlacement: function(error, element) {
+						if ($(element).is('select')) {
+							error.insertAfter($(element).parent());
+						}
+						else {
+							error.insertAfter(element);
+						}
+					}
+				}).form() == true) {
+					$.ajax({ 
+						type: "POST",
+						url: "http://facility.ejedigital.cl/wsfacility/services/????",
+						data: { a1 : null, a2 : "1", a3 : "", a4 : null, a5 : null, a6 : null, a7 : null, a8 : null },
+						crossDomain : true,
+						success: function(data,status,jqXHR) { }
+					})
+				}
+		});			
+});
 
-function getProductos(data){
-		$.each(data, function(key, val) {
-			$.each(val, function(key2, val2) {
-
-				$('#producto').append($('<option>', {value : val2[0].value}).text(val2[1].value));
-			});
-		});			    		
+function getProductos (data) {
+	$.each(data, function(key, val) {
+		$.each(val, function(key2, val2) {
+			html = '';
+			html += '<input type="checkbox" name="producto" id="producto_'+ val2[0].value +'" class="custom" />';
+			html += '<label for="producto_'+ val2[0].value +'">'+ val2[1].value +'</label>';
+			$('#producto_servicio fieldset').append(html);
+			$('#producto_' + val2[0].value).checkboxradio();
+		});
+	});		
+	$('#principal').trigger('create');	    		
 }
 
-function getGeografica(data){
-
-	//data = [{"a1":"60","a2":"Region","a3":"","a4":"59","a5":"1","a6":"1"},{"a1":"61","a2":"Norte","a3":"","a4":"60","a5":"1","a6":"1"},{"a1":"62","a2":"Sur","a3":"","a4":"60","a5":"1","a6":"1"},{"a1":"63","a2":"Este","a3":"","a4":"60","a5":"1","a6":"1"},{"a1":"64","a2":"Oeste","a3":"","a4":"60","a5":"1","a6":"1"},{"a1":"65","a2":"Tramos Poblacion","a3":"","a4":"59","a5":"1","a6":"1"},{"a1":"66","a2":"Menos de 10000","a3":"","a4":"65","a5":"1","a6":"1"},{"a1":"67","a2":"Entre 10001 y 50000","a3":"","a4":"65","a5":"1","a6":"1"},{"a1":"68","a2":"Entre 50001 y 100000","a3":"","a4":"65","a5":"1","a6":"1"},{"a1":"69","a2":"Entre 100001 y 300000","a3":"","a4":"65","a5":"1","a6":"1"},{"a1":"70","a2":"Mas 300000","a3":"","a4":"65","a5":"1","a6":"1"},{"a1":"71","a2":"Densidad","a3":"","a4":"59","a5":"1","a6":"1"},{"a1":"72","a2":"Clima","a3":"","a4":"59","a5":"1","a6":"1"}];
-	
+function getGeografica(data) {
 	html = '<div data-role="collapsible" id="geografica" data-theme="b" data-content-theme="d">';
 	html +=	 '<h3>Geográfica</h3>';
 	i = 0;
 	$.each(data, function(data, val) {
-		if(val.a4 == '59'){
-			if( i != 0 ){
+		if(val.a4 == '59') {
+			if( i != 0 ) {
 				html += '</select>';
 				html += '</div>';
 			}
 			html += '<div data-role="fieldcontain"  id="geografica_'+ val.a1 +'">';
 			html += '<label for="'+ val.a1 +'">'+ val.a2 +':</label>';
-			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '">';
+			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '" class="required">';
+			html += '<option value="" selected>Elegir '+ val.a2 + '</option>';
 		}
-		else{
-			html += '<option id="'+ val.a1 +'">'+ val.a2 + '</option>';
+		else {
+			html += '<option value="'+ val.a1 +'">'+ val.a2 + '</option>';
 		}
 		i++;
 	});
@@ -45,23 +69,23 @@ function getGeografica(data){
 	$('#principal').trigger('create');
 }
 
-function getDemografica(data){
-
+function getDemografica(data) {
 	html = '<div data-role="collapsible" id="demografica" data-theme="b" data-content-theme="d">';
 	html +=	 '<h3>Demográfica</h3>';
 	i = 0;
 	$.each(data, function(data, val) {
-		if(val.a4 == '80'){
-			if( i != 0 ){
+		if(val.a4 == '80') {
+			if( i != 0 ) {
 				html += '</select>';
 				html += '</div>';
 			}
 			html += '<div data-role="fieldcontain"  id="demografica_'+ val.a1 +'">';
 			html += '<label for="'+ val.a1 +'">'+ val.a2 +':</label>';
-			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '">';
+			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '" class="required">';
+			html += '<option value="" selected>Elegir '+ val.a2 + '</option>';
 		}
-		else{
-			html += '<option id="'+ val.a1 +'">'+ val.a2 + '</option>';
+		else {
+			html += '<option value="'+ val.a1 +'"  >'+ val.a2 + '</option>';
 		}
 		i++;
 	});
@@ -73,31 +97,32 @@ function getDemografica(data){
 	$('#principal').trigger('create');
 }
 
-function getSocioeconomica(data){
-
-	html = '<div data-role="collapsible" id="demografica" data-theme="b" data-content-theme="d">';
-	html +=	 '<h3>Socioeconómica</h3>';
+function getSocioeconomica(data) {
+	html = '<div data-role="collapsible" id="socioeconomica" data-theme="b" data-content-theme="d">';
+	html +=	 '<h3>SocioEconomica</h3>';
 	i = 0;
 	$.each(data, function(data, val) {
-		if(val.a4 == '143'){
-			if( i != 0 ){
+		if(val.a4 == '143') {
+			if( i != 0 ) {
 				html += '</select>';
 				html += '</div>';
 			}
-			html += '<div data-role="fieldcontain"  id="socioeconomica_'+ val.a1 +'">';
+			html += '<div data-role="fieldcontain"  id="socioeconomica'+ val.a1 +'">';
 			html += '<label for="'+ val.a1 +'">'+ val.a2 +':</label>';
-			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '">';
+			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '" class="required">';
+			html += '<option value="" selected>Elegir '+ val.a2 + '</option>';
 		}
-		else{
-			html += '<option id="'+ val.a1 +'">'+ val.a2 + '</option>';
+		else {
+			html += '<option value="'+ val.a1 +'"  >'+ val.a2 + '</option>';
 		}
 		i++;
 	});
 	html += '</select>';
 	html += '</div>';
-	
 	$('#segmento').append(html);
 	$('#segmento #socioeconomica').collapsible();
 	$('#principal').trigger('create');
 }
+	
+
 	

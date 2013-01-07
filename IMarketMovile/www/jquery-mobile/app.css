@@ -1,0 +1,8 @@
+/* CSS Document redefine label de error */
+label.error { 
+	float:inherit; 
+	color: red; 
+	padding-top: .5em; 
+	vertical-align: top; 
+	font-weight:bold
+}

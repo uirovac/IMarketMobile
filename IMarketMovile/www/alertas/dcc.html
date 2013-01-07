@@ -1,54 +1,52 @@
 <!DOCTYPE html> 
 <html>
-<head>
-<meta charset="utf-8">
-<title>Intelligence Market</title>
-<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
-<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
-<script src="dcc.js"></script>
-</head> 
-<body> 
-
-<div data-role="page" id="principal" data-theme="b">
-	<div data-role="header">
-    	<a href="competencia.html" rel="external">Atrás</a>
-		<h1>IMarket - DCC</h1>
-	</div>
-	<div data-role="content" id="contenido">
-    	<div data-role="fieldcontain">
-         	<label for="competidor">Competidor:</label>
-         	<select name="competidor" id="competidor">
-            	<option selected>Escoger Competidor</option>
-         	  </select>
+	<head>
+		<meta charset="utf-8">
+		<title>IMarket</title>
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="../jquery-mobile/jquery.chained.js"></script>		
+		<script src="dcc.js"></script>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">
+	</head> 
+	<body> 
+		<div data-role="page" id="principal" data-theme="b">
+			<div data-role="header">
+		    	<a href="competencia.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>IMarket - DCC</h1>
+		    	<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<form method="post" id="formulario">
+				<div data-role="content" id="contenido">
+					<div data-role="fieldcontain">
+			         	<label for="local">Local:</label>
+			         	<select id="local" name="local" class="required">
+			            	<option value="" selected>Escoger Local</option>
+			            </select>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="punto_de_venta">Punto de Venta:</label>
+			         	<select id="punto_de_venta" name="punto_de_venta" class="required">
+			            	<option  value="" selected>Escoger Punto de Venta</option>
+			            </select>
+					</div>
+			    	<div data-role="fieldcontain">
+			         	<label for="competidor">Competidor:</label>
+			         	<select name="competidor" id="competidor" class="required">
+			            	<option value="" selected>Escoger Competidor</option>
+			         	  </select>
+					</div>
+				</div>
+			</form>
+			<div data-role="footer" data-position="fixed">
+				<h4>&nbsp;</h4>
+				<input type="button" id="setDataToServer" name="guardar" value="Guardar" class="ui-footer ui-btn-right"/>
+			</div>
 		</div>
-		<!--<div data-role="fieldcontain">
-         	<label for="mts2">Mts2:</label>
-         	<select id="mts2">
-            	<option selected></option>
-            </select>
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="trabajadores">Trabajadores:</label>
-         	<input type="number" name="trabajadores" id="trabajadores" value=""  />
-		</div>
-       <div data-role="fieldcontain">
-    		<fieldset data-role="controlgroup">
-	   			<legend>Acercamiento:</legend>
-	   			<input type="checkbox" name="acercamiento" id="acercamiento_1" class="custom" />
-	   			<label for="acercamiento_1">Microbus</label>
-                <input type="checkbox" name="acercamiento" id="acercamiento_2" class="custom" />
-	   			<label for="acercamiento_2">Taxis</label>
-                <input type="checkbox" name="acercamiento" id="acercamiento_3" class="custom" />
-	   			<label for="acercamiento_3">Metro</label>
-   			</fieldset>
-		</div>-->
-	</div>
-	<div data-role="footer" data-position="fixed">
-		<h4>&nbsp;</h4>
-	</div>
-</div>
-</body>
+	</body>
 </html>
 
 

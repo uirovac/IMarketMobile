@@ -1,97 +1,93 @@
 <!DOCTYPE html> 
 <html>
-<head>
-<meta charset="utf-8">
-<title>Intelligence Market</title>
-<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
-<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
-<script src="nuevo_competidor.js"></script>
-<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
-</head> 
-<body> 
-
-<div data-role="page" id="principal" data-theme="b">
-	<div data-role="header" data-position="fixed">
-    	<a href="index.html" rel="external">Atrás</a>
-		<h1>IMarket - Nuevo Competidor</h1>
-	</div>
-	<div data-role="content">
-    
-		<div data-role="fieldcontain">
-         	<label for="nombre">Nombre:</label>
-         	<input type="text" name="nombre" id="nombre" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="nombre">Descripción:</label>
-         	<input type="text" name="descripcion" id="descripcion" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="local">Local:</label>
-         	<select id="local" name="local">
-            	<option selected>Escoger Local</option>
-            </select>
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="punto_de_venta">Punto de Venta:</label>
-         	<select id="punto_de_venta" name="punto_de_venta">
-            	<option selected>Escoger Punto de Venta</option>
-            </select>
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="nombre">Producto / Servicio</label>
-         	<select id="producto_servicio" name="producto_servicio">
-            	<option value="-1" selected>Escoger Producto / Servicio</option>
-                            </select>
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="nombre">Representante Legal:</label>
-         	<input type="text" name="representante_legal" id="representante_legal" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="nombre">Giro:</label>
-         	<input type="text" name="giro" id="giro" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="nombre">Ubicación Geográfica:</label>
-         	<div data-role="collapsible-set">
-				<div data-role="collapsible" data-theme="b" data-content-theme="d">
-					<h3>Abrir</h3>
+	<head>
+		<meta charset="utf-8">
+		<title>IMarket</title>
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="../jquery-mobile/jquery.chained.js"></script>
+		<script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+		<script src="nuevo_competidor.js"></script>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">
+	</head> 
+	<body> 
+		<div data-role="page" id="principal" data-theme="b">
+			<div data-role="header" data-position="fixed">
+		    	<a href="index.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>IMarket - Nuevo Competidor</h1>
+		    	<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<div data-role="content">
+			 	<form method="post" id="formulario">
 					<div data-role="fieldcontain">
-                        <label for="calle">Calle:</label>
-                        <input type="text" name="calle" id="calle" value=""  />
-                    </div>
-                    <div data-role="fieldcontain">
-                        <label for="numero">Número:</label>
-                        <input type="text" name="numero" id="numero" value=""  />	
-                    </div>
-                    <div data-role="fieldcontain">
-                          <label for="depto">Depto:</label>
-                        <input type="text" name="depto" id="depto" value=""  />
-                    </div>
-                    <div data-role="fieldcontain">
-                        <label for="comuna">Comuna:</label>
-                        <input type="text" name="comuna" id="comuna" value=""  />
-                    </div>
-                    <div data-role="fieldcontain">
-                        <label for="region">Región:</label>
-                        <input type="text" name="region" id="region" value=""  />
-                    </div>
-                    <div data-role="fieldcontain">
-                        <label for="pais">País:</label>
-                        <input type="text" name="pais" id="pais" value=""  />
-                    </div>
-                 </div>
-             </div>
+			         	<label for="nombre">Nombre:</label>
+			         	<input type="text" name="nombre" id="nombre" value="" class="required" />
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="nombre">Descripción:</label>
+			         	<input type="text" name="descripcion" id="descripcion" value="" class="required" />
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="local">Cadena:</label>
+			         	<select id="local" name="local" class="required">
+			            	<option selected>Escoger Cadena</option>
+			            </select>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="punto_de_venta">Punto de Venta:</label>
+			         	<select id="punto_de_venta" name="punto_de_venta" class="required">
+			            	<option selected>Escoger Punto de Venta</option>
+			            </select>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="nombre">Producto / Servicio</label>
+			         	<select id="producto" name="producto" class="required">
+			            	<option value="-1" selected>Escoger Producto / Servicio</option>
+						</select>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="nombre">Representante Legal:</label>
+			         	<input type="text" name="representante_legal" id="representante_legal" value="" class="required"/>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="nombre">Giro:</label>
+			         	<input type="text" name="giro" id="giro" value="" class="required"/>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<div data-role="collapsible-set">
+							<div data-role="collapsible" data-theme="b" data-content-theme="d">
+								<h3>Ubicación Geográfica:</h3>
+								<div data-role="fieldcontain">
+			                        <label for="calle">Calle:</label>
+			                        <input type="text" name="calle" id="calle" value="" class="required"/>
+			                    </div>
+			                    <div data-role="fieldcontain">
+			                        <label for="numero">Número:</label>
+			                        <input type="text" name="numero" id="numero" value="" class="required"/>	
+			                    </div>
+			                    <div data-role="fieldcontain">
+			                        <label for="comuna">Comuna:</label>
+			                        <input type="text" name="comuna" id="comuna" value="" class="required"/>
+			                    </div>
+			                    <div data-role="fieldcontain">
+			                        <label for="region">Región:</label>
+			                        <input type="text" name="region" id="region" value="" class="required"/>
+			                    </div>
+			                    <div data-role="fieldcontain">
+			                        <label for="pais">País:</label>
+			                        <input type="text" name="pais" id="pais" value="" class="required"/>
+			                    </div>
+			                 </div>
+			             </div>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" class="ui-bar">
+				<h4>&nbsp;</h4>
+		    	<input type="button" id="setDataToServer" name="guardar" value="Guardar" class="ui-footer ui-btn-right"/>
+			</div>
 		</div>
-	</div>
-
-	<div data-role="footer" data-position="fixed" class="ui-bar">
-		<h4>&nbsp;</h4>
-    	<input type="button" name="guardar" value="Guardar" class="ui-footer ui-btn-right"/>
-	</div>
-</div>
-
-
-
-</body>
+	</body>
 </html>

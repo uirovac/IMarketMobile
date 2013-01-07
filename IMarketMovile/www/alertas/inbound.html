@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title> - jsFiddle demo by jtsage</title>
-  
- <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css"> 
-  <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.simpledialog.min.css">
-<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
-<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
-<script src="../jquery-mobile/jquery.mobile.simpledialog2.min.js"></script>
-<script type="text/javascript">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Inbound Messages</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css"> 
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.simpledialog.min.css">
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile.simpledialog2.min.js"></script>
+		<script type="text/javascript">
 			if (!!window.EventSource) {
 				var eventSrc = new EventSource('http://facility.ejedigital.cl/facility/dispatcher?c=DisplayMessage&m=daily' );
 				eventSrc.addEventListener('message',
 					function(e) {
-						
 						var mensaje = "";
 						var data = JSON.parse(e.data);
-						
 						$('html').simpledialog2({
    						 mode: 'blank',
     					headerText: data.asunto,
@@ -29,12 +26,7 @@
 							'	<h1>'+ data.asunto + '</h1>'+
 							'	<p>'+ data.msg +'</p>'+
 							'</div>' 
-      						/*"<ul data-role='listview'><li>Some</li><li>List</li><li>Items</li></ul>"+
-      						// NOTE: the use of rel="close" causes this button to close the dialog.
-      						"<a rel='close' data-role='button' href='#'>Close</a>"*/
   						});
-						
-						
 						/*var mensaje = "<br><p><strong>" + data.asunto + "</p></strong>";
 						mensaje += "<p>" + data.msg + "</p>";
 						if(mensaje != "") {
@@ -66,6 +58,7 @@
 				//document.getElementById("contenido").innerHTML = "Funcionalidad no soportada por el browser";
 			}
 		</script>
+
 <!--<script type='text/javascript'>
 $(window).load(function(){
 $('html').simpledialog2({
@@ -83,17 +76,12 @@ $('html').simpledialog2({
 }); 
 
 </script>-->
-
-
-</head>
-<body>
-  <ul data-role="listview">
-    <li><a href="#">foo</a></li>
-    <li><a href="#">bar</a></li>
-    <li><a href="#">baz</a></li>
-</ul>
-  
-</body>
-
-
+	</head>
+	<body>
+		<ul data-role="listview">
+			<li><a href="#">foo</a></li>
+			<li><a href="#">bar</a></li>
+			<li><a href="#">baz</a></li>
+		</ul>
+	</body>
 </html>

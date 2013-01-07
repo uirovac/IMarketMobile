@@ -1,29 +1,55 @@
 //Librerias
 $("#principal").live('pageshow', function() {
+	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/143",{ },getSocioeconomica);
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/59",{ },getGeografica);
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/80",{ },getDemografica);
-	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/143",{ },getSocioeconomica);
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p2s/querys/competidores",{ },getCompetidores);
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p2s/querys/mercados",{ },getMercados);
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/124",{ },getCaracteristicasLocal);
+	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p2s/querys/establecimientos",{ }, getLocal);
+
+	$("#setDataToServer").click(
+			function() {
+				if ($('#formulario').validate({
+					//redefine la posicion del mensaje de error para los campos combobox 
+					errorPlacement: function(error, element) {
+						if ($(element).is('select')) {
+							error.insertAfter($(element).parent());
+						}
+						else {
+							error.insertAfter(element);
+						}
+					}
+				}).form() == true) {
+					var direccion = document.getElementById("direccion_fisica").value;
+					$.ajax({ 
+						type: "POST",
+						url: "http://facility.ejedigital.cl/wsfacility/services/upload/imgdata",
+						data: { a1 : facingImage, a2 : "1", a3 : "Nada por el momento", a4 : pto_de_vta, a5 : producto, a6 : posLatitud, a7 : posLongitud, a8 : direccion },
+						crossDomain : true,
+						success: function(data,status,jqXHR) { }
+					})
+				}
+			});		
 });
 
-function getGeografica(data){
+function getGeografica(data) {
 	html = '<div data-role="collapsible" id="geografica" data-theme="b" data-content-theme="d">';
 	html +=	 '<h3>Geográfica</h3>';
 	i = 0;
 	$.each(data, function(data, val) {
-		if(val.a4 == '59'){
-			if( i != 0 ){
+		if(val.a4 == '59') {
+			if( i != 0 ) {
 				html += '</select>';
 				html += '</div>';
 			}
 			html += '<div data-role="fieldcontain"  id="geografica_'+ val.a1 +'">';
 			html += '<label for="'+ val.a1 +'">'+ val.a2 +':</label>';
-			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '">';
+			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '" class="required">';
+			html += '<option value="" selected>Elegir '+ val.a2 + '</option>';
 		}
-		else{
-			html += '<option id="'+ val.a1 +'">'+ val.a2 + '</option>';
+		else {
+			html += '<option value="'+ val.a1 +'">'+ val.a2 + '</option>';
 		}
 		i++;
 	});
@@ -35,23 +61,23 @@ function getGeografica(data){
 	$('#principal').trigger('create');
 }
 
-function getDemografica(data){
-
+function getDemografica(data) {
 	html = '<div data-role="collapsible" id="demografica" data-theme="b" data-content-theme="d">';
 	html +=	 '<h3>Demográfica</h3>';
 	i = 0;
 	$.each(data, function(data, val) {
-		if(val.a4 == '80'){
-			if( i != 0 ){
+		if(val.a4 == '80') {
+			if( i != 0 ) {
 				html += '</select>';
 				html += '</div>';
 			}
 			html += '<div data-role="fieldcontain"  id="demografica_'+ val.a1 +'">';
 			html += '<label for="'+ val.a1 +'">'+ val.a2 +':</label>';
-			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '">';
+			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '" class="required">';
+			html += '<option value="" selected>Elegir '+ val.a2 + '</option>';
 		}
-		else{
-			html += '<option id="'+ val.a1 +'">'+ val.a2 + '</option>';
+		else {
+			html += '<option value="'+ val.a1 +'"  >'+ val.a2 + '</option>';
 		}
 		i++;
 	});
@@ -63,73 +89,72 @@ function getDemografica(data){
 	$('#principal').trigger('create');
 }
 
-function getSocioeconomica(data){
-
-	html = '<div data-role="collapsible" id="demografica" data-theme="b" data-content-theme="d">';
-	html +=	 '<h3>Socioeconómica</h3>';
+function getSocioeconomica(data) {
+	html = '<div data-role="collapsible" id="socioeconomica" data-theme="b" data-content-theme="d">';
+	html +=	 '<h3>SocioEconomica</h3>';
 	i = 0;
 	$.each(data, function(data, val) {
-		if(val.a4 == '143'){
-			if( i != 0 ){
+		if(val.a4 == '143') {
+			if( i != 0 ) {
 				html += '</select>';
 				html += '</div>';
 			}
-			html += '<div data-role="fieldcontain"  id="socioeconomica_'+ val.a1 +'">';
+			html += '<div data-role="fieldcontain"  id="socioeconomica'+ val.a1 +'">';
 			html += '<label for="'+ val.a1 +'">'+ val.a2 +':</label>';
-			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '">';
+			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '" class="required">';
+			html += '<option value="" selected>Elegir '+ val.a2 + '</option>';
 		}
-		else{
-			html += '<option id="'+ val.a1 +'">'+ val.a2 + '</option>';
+		else {
+			html += '<option value="'+ val.a1 +'"  >'+ val.a2 + '</option>';
 		}
 		i++;
 	});
 	html += '</select>';
 	html += '</div>';
-	
 	$('#segmento').append(html);
 	$('#segmento #socioeconomica').collapsible();
 	$('#principal').trigger('create');
 }
 
-function getCompetidores (data){
-  $.each(data, function(key, val) {
-	  $.each(val, function(key2, val2) {
-		  html = '';
-		  html += '<input type="checkbox" name="competidor" id="competidor_'+ val2[0].value +'" class="custom" />';
-		  html += '<label for="competidor_'+ val2[0].value +'">'+ val2[1].value +'</label>';
-		  $('#competidores fieldset').append(html);
-		  $('#competidor_' + val2[0].value).checkboxradio();
-	  });
-  });		
-  $('#principal').trigger('create');	    		
-	
+function getCompetidores (data) {
+	$.each(data, function(key, val) {
+		$.each(val, function(key2, val2) {
+			html = '';
+			html += '<input type="checkbox" name="competidor" id="competidor_'+ val2[0].value +'" class="custom" />';
+			html += '<label for="competidor_'+ val2[0].value +'">'+ val2[1].value +'</label>';
+			$('#competidores fieldset').append(html);
+			$('#competidor_' + val2[0].value).checkboxradio();
+		});
+	});		
+	$('#principal').trigger('create');	    		
 }
 
-function getMercados(data){
-		$.each(data, function(key, val) {
-			$.each(val, function(key2, val2) {
-				$('#mercado').append($('<option>', {value : val2[0].value}).text(val2[1].value));
-			});
-		});			    		
+function getMercados(data) {
+	$.each(data, function(key, val) {
+		$.each(val, function(key2, val2) {
+			$('#mercado').append($('<option>', {value : val2[0].value}).text(val2[1].value));
+		});
+	});			    		
 }
 
-function getCaracteristicasLocal(data){
+function getCaracteristicasLocal(data) {
 	html = '<div data-role="collapsible" id="contenido" data-theme="b" data-content-theme="d">';
-	html +=	 '<h3>Abrir</h3>';
+	html +=	 '<h3>Caracteristicas Local</h3>';
 	i = 0;
 	$.each(data, function(data, val) {
-		if(val.a4 == '124'){
-			if( i != 0 ){
+		if(val.a4 == '124') {
+			if( i != 0 ) {
 				html += '</select>';
 				html += '</div>';
 			}
 			html += '<div data-role="fieldcontain">';
 			html += '<label for="'+ val.a1 +'">'+ val.a2 +':</label>';
-			if(val.a7 != '0'){
-				html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '">';
+			if(val.a7 != '0') {
+				html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '" class="required">';
+				html += '<option value="" selected>Elegir '+ val.a2 + '</option>';
 			}
 			else{
-				html += '<input type="text" name="'+ val.a2 +'" id="'+ val.a1 +'" value="" />';
+				html += '<input type="text" name="'+ val.a2 +'" id="'+ val.a1 +'" value="" class="required" />';
 			}
 		}
 		else{
@@ -139,15 +164,14 @@ function getCaracteristicasLocal(data){
 	});
 	html += '</select>';
 	html += '</div>';
-	
 	$('#caracteristicas').append(html);
-	//$('#segmento #geografica').collapsible();
 	$('#principal').trigger('create');
 }
 
-
-
-
-
-
-
+function getLocal(data) {
+	$.each(data, function(key, val) {
+		$.each(val, function(key2, val2) {
+			$('#local').append($('<option>', {value : val2[0].value}).text(val2[1].value));
+		});
+	});
+}

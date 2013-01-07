@@ -1,91 +1,105 @@
 <!DOCTYPE html> 
 <html>
-<head>
-<meta charset="utf-8">
-<title>Intelligence Market</title>
-<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
-<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.css">
-<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
-<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
-<script src="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.js"></script>
-<script src="index.js"></script>
-</head> 
-<body> 
-
-<div data-role="page" id="principal" data-theme="b">
-	<div data-role="header">
-    	<a href="../index.html#procesos_competencia" rel="external">Atrás</a>
-		<h1>IMarket - Promociones</h1>
-	</div>
-	<div data-role="content">
-    
-		<div data-role="fieldcontain">
-         	<label for="nombre">Nombre:</label>
-         	<input type="text" name="nombre" id="nombre" value=""  />
+	<head>
+		<meta charset="utf-8">
+		<title>IMarket</title>
+		<script type="text/javascript" charset="utf-8" src="../cordova-1.9.0.js"></script>		
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="../jquery-mobile/jquery.chained.js"></script>
+		<script src="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.js"></script>
+		<script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+		<script src="../js/camera.js"></script>
+		<script src="index.js"></script>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jqm-icon-pack-2.1.2-fa.css">		
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">
+	</head> 
+	<body> 
+		<div data-role="page" id="principal" data-theme="b">
+			<div data-role="header">
+		    	<a href="../index.html#procesos_competencia" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>IMarket - Promociones</h1>
+		    	<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<div data-role="content">
+		    	<form method="post" id="formulario">
+					<div data-role="fieldcontain">
+			         	<label for="nombre">Nombre:</label>
+			         	<input type="text" name="nombre" id="nombre" value="" class="required"/>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="descripcion">Descripcion:</label>
+			         	<input type="text" name="descripcion" id="descripcion" value="" class="required"/>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="fecha_inicio">Fecha Inicio:</label>
+			            <input name="fecha_inicio" id="fecha_inicio" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}' class="required">
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="fecha_termino">Fecha Término:</label>
+			            <input name="fecha_termino" id="fecha_termino" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}' class="required">
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="local">Cadena:</label>
+			         	<select id="local" name="punto_de_venta" class="required">
+			            	<option selected>Escoger Cadena</option>
+			            </select>
+					</div>
+			        <div data-role="fieldcontain">
+			        	  <label for="punto_de_venta"> Punto de Venta:</label>
+			         	<select id="punto_de_venta" name="punto_de_venta" class="required">
+			            	<option>Escoger Punto de Venta</option>
+			            </select>
+					</div>		
+			       <div data-role="fieldcontain">
+			         	<label for="producto_servicio">Producto / Servicio:</label>
+			         	<div data-role="collapsible-set">
+						<div data-role="collapsible"  data-theme="b" data-content-theme="d"  id="producto_servicio" >
+								<h3>Abrir</h3>
+			    					<fieldset data-role="controlgroup">
+			   						</fieldset>
+			                 </div>
+			             </div>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="precio_promocion">Precio Promocion:</label>
+			         	<input type="number" name="precio_promocion" id="precio_promocion" value="" class="required" />
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="precio_normal">Precio Normal:</label>
+			         	<input type="number" name="precio_normal" id="precio_normal" value="" class="required" />
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="porcentaje">Porcentaje Descuento:</label>
+			         	<input type="number" name="porcentaje" id="porcentaje" value="" />
+					</div>
+			        <div data-role="fieldcontain" data-inline="true" style="display:inline;">
+		                <div data-role="controlgroup" data-type="horizontal" style="display:inline;">
+		                    <a href="#" data-role="button" onclick="capturePhotoEdit(Camera.PictureSourceType.CAMERA);">Captura</a>
+		                </div>
+						<a href="#fotografia" rel="external" data-role="button" class="ui-btn-right" data-iconpos="notext" data-icon="picture">Home</a>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" class="ui-bar">
+				<h4>&nbsp;</h4>
+		    	<input type="button" id="setDataToServer" name="guardar" value="Guardar" class="ui-footer ui-btn-right"/>
+			</div>
 		</div>
-        <div data-role="fieldcontain">
-         	<label for="descripcion">Descripcion:</label>
-         	<input type="text" name="descripcion" id="descripcion" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="fecha_inicio">Fecha Inicio:</label>
-            <input name="fecha_inicio" id="fecha_inicio" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}'>
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="fecha_termino">Fecha Término:</label>
-            <input name="fecha_termino" id="fecha_termino" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}'>
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="local">Local:</label>
-         	<select id="local" name="punto_de_venta">
-            	<option selected>Escoger Local</option>
-            </select>
-		</div>
-        <div data-role="fieldcontain">
-        	  <label for="punto_de_venta"> Punto de Venta:</label>
-         	<select id="punto_de_venta" name="punto_de_venta">
-            	<option>Escoger Punto de Venta</option>
-            </select>
-		</div>		
-       <div data-role="fieldcontain">
-         	<label for="producto">Producto / Servicio:</label>
-         	<div data-role="collapsible-set">
-			<div data-role="collapsible"  data-theme="b" data-content-theme="d"  id="producto_servicio" >
-					<h3>Abrir</h3>
-    					<fieldset data-role="controlgroup">
-	   						<!--<input type="checkbox" name="producto" id="producto_1" class="custom" />
-	   						<label for="producto_1">Producto 1</label>
-                			<input type="checkbox" name="producto" id="producto_2" class="custom" />
-	   						<label for="producto_2">Producto 2</label>
-                			<input type="checkbox" name="producto" id="producto_3" class="custom" />
-	   						<label for="producto_3">Producto 3</label>-->
-   						</fieldset>
-					
-                 </div>
-             </div>
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="precio_promocion">Precio Promocion:</label>
-         	<input type="number" name="precio_promocion" id="precio_promocion" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="precio_normal">Precio Normal:</label>
-         	<input type="number" name="precio_normal" id="precio_normal" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="porcentaje">Porcentaje Descuento:</label>
-         	<input type="number" name="porcentaje" id="porcentaje" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="fotos_ptodevta">Fotos Pto. de Venta:</label>
-         	<input type="text" name="fotos_ptodevta" id="fotos_ptodevta" value=""  />
-		</div>
-	</div>
-
-	<div data-role="footer" data-position="fixed">
-		<h4>&nbsp;</h4>
-	</div>
-</div>
-</body>
+		<div data-role="page" id="fotografia" data-theme="b">
+			<div data-role="header">
+		    	<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>IMarket - Fotografia</h1>
+			</div>
+			<div data-role="content">	
+				<img style="display: none; width: 100px; height: 100px; text-align:center" id="capturefacing" src="" />
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h4>&nbsp;</h4>
+			</div>
+		</div>			
+	</body>
 </html>
-

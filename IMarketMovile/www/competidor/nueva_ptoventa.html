@@ -1,83 +1,74 @@
 <!DOCTYPE html> 
 <html>
-<head>
-<meta charset="utf-8">
-<title>Intelligence Market</title>
-<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
-<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
-<script src="nueva_ptoventa.js"></script>
-<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
-</head> 
-<body> 
-
-<div data-role="page" id="principal" data-theme="b">
-	<div data-role="header">
-    	<a href="index.html" rel="external">Atrás</a>
-		<h1>IMarket - Punto de Venta</h1>
-	</div>
-	<div data-role="content">
-    	<div data-role="fieldcontain">
-         	<label for="oferente">Oferente:</label>
-         	<input type="text" name="oferente" id="oferente" value="NOMBRE OFERENTE"  />
+	<head>
+		<meta charset="utf-8">
+		<title>IMarket</title>
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+		<script src="nueva_ptoventa.js"></script>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">
+	</head> 
+	<body> 
+		<div data-role="page" id="principal" data-theme="b">
+			<div data-role="header">
+				<a href="index.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>IMarket - Punto de Venta</h1>
+		    	<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<div data-role="content">
+			    <form method="post" id="formulario">
+			        <div data-role="fieldcontain">
+			         	<label for="mercado"> Mercado:</label>
+			         	<select name="mercado" id="mercado" class="required">
+			            	<option value="" selected>Escoger Mercado</option>
+			       	  </select>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="local">Cadena:</label>
+			         	<select id="local" name="local" class="required">
+			            	<option selected>Escoger Cadena</option>
+			            </select>
+					</div>
+					<div data-role="fieldcontain">
+			         	<label for="nombre">Nombre:</label>
+			         	<input type="text" name="nombre" id="nombre" value="" class="required"  />
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="ubicacion">Ubicación:</label>
+			         	<input type="text" name="ubicacion" id="ubicacion" value="" class="required"/>
+					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="fotos">Foto:</label>
+			         	<input type="text" name="fotos" id="fotos" value=""  />
+					</div>
+			        <div data-role="fieldcontain">
+			    		<div data-role="collapsible-set">
+							<div data-role="collapsible"  data-theme="b" data-content-theme="d" id="competidores">
+								<h3>Competidor</h3>
+			    					<fieldset data-role="controlgroup">
+			   						</fieldset>
+			                 </div>
+			             </div>
+					</div>
+					<div data-role="fieldcontain">
+			            <fieldset>
+				    		<div data-role="collapsible-set" id="caracteristicas">
+							</div>
+						</fieldset>
+					</div>
+			        <div data-role="fieldcontain">
+			        	<label for="smercado">Tipo Segmento:</label>
+			    		<div data-role="collapsible-set" id="segmento"></div>
+			         </div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" >
+				<h4>&nbsp;</h4>
+				<input type="button" id="setDataToServer" name="guardar" value="Guardar" class="ui-footer ui-btn-right"/>
+			</div>
 		</div>
-        <div data-role="fieldcontain">
-         	<label for="local">Local:</label>
-         	<select id="local" name="punto_de_venta">
-            	<option selected>Escoger Local</option>
-            </select>
-		</div>
-		<div data-role="fieldcontain">
-         	<label for="nombre">Nombre:</label>
-         	<input type="text" name="nombre" id="nombre" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="ubicacion">Ubicación:</label>
-         	<input type="text" name="ubicacion" id="ubicacion" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="fotos">Foto:</label>
-         	<input type="text" name="fotos" id="fotos" value=""  />
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="competidor">Identificación Competidor:</label>
-    		<div data-role="collapsible-set">
-				<div data-role="collapsible"  data-theme="b" data-content-theme="d" id="competidores">
-					<h3>Abrir</h3>
-					
-    					<fieldset data-role="controlgroup">
-	
-   						</fieldset>
-					
-                 </div>
-             </div>
-		</div>
-        <div data-role="fieldcontain">
-         	<label for="mercado"> Mercado:</label>
-         	<select name="mercado" id="mercado">
-            	<option selected>Escoger Mercado</option>
-       	  </select>
-		</div>
-         <div data-role="fieldcontain">
-        	<label for="caracteristicas">Caracteristicas Local:</label>
-            <fieldset>
-    		<div data-role="collapsible-set" id="caracteristicas">
-				
-             </div>
-             </fieldset>
-           </div>
-    
-        <div data-role="fieldcontain">
-        	<label for="smercado">Tipo Segmento:</label>
-    		<div data-role="collapsible-set" id="segmento">
-       		</div>
-          </div>
-	</div>
-	</div>
-
-	<div data-role="footer" data-position="fixed">
-		<h4>&nbsp;</h4>
-	</div>
-</div>
-
-</body>
+	</body>
 </html>
