@@ -1,5 +1,5 @@
 // JavaScript Document
-$("#principal").live('pageshow', function() {
+$("#principal").live('pageinit', function() {
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/59",{ },getGeografica);
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/80",{ },getDemografica);
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/143",{ },getSocioeconomica);

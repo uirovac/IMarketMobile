@@ -21,7 +21,7 @@
 				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
 			</div>
 			<div data-role="content">
-			 	<form method="post" id="formulario">
+			 	<form method="post" id="formulario" action="http://localhost:8080/wsfacility/dispatcher">
 					<div data-role="fieldcontain">
 			         	<label for="nombre">Nombre:</label>
 			         	<input type="text" name="nombre" id="nombre" value="" class="required"/>
@@ -32,11 +32,11 @@
 					</div>
 			        <div data-role="fieldcontain">
 			         	<label for="fecha_creacion">Fecha Creación:</label>
-			            <input name="fecha_creacion" id="fecha_creacion" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}' class="required">
+			            <input name="fecha_creacion" id="fecha_creacion" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}'>
 					</div>
 			        <div data-role="fieldcontain">
 			         	<label for="fecha_vencimiento">Fecha Vencimiento</label>
-			            <input name="fecha_vencimiento" id="fecha_vencimiento" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}' class="required">
+			            <input name="fecha_vencimiento" id="fecha_vencimiento" type="date" data-role="datebox" data-options='{"mode": "datebox", "minDays" : 0, "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}'>
 					</div>
 				    <div data-role="fieldcontain">
 				    	<div data-role="collapsible-set" id="caracteristicas"></div>
@@ -45,8 +45,7 @@
 			         	<div data-role="collapsible-set">
 							<div data-role="collapsible"  data-theme="b" data-content-theme="d" id="complementarios">
 								<h3>Complementarios</h3>
-			    					<fieldset data-role="controlgroup">
-			   						</fieldset>
+			    					<fieldset data-role="controlgroup"></fieldset>
 			                 </div>
 			             </div>
 					</div>
@@ -54,26 +53,27 @@
 			         	<div data-role="collapsible-set">
 							<div data-role="collapsible"  data-theme="b" data-content-theme="d" id="sustitutos">
 								<h3>Sustitutos</h3>
-			    					<fieldset data-role="controlgroup">
-			   						</fieldset>
+			    					<fieldset data-role="controlgroup"></fieldset>
 			                 </div>
 			             </div>
 					</div>
 			        <div data-role="fieldcontain">
 			         	<label for="precio">Precio:</label>
-			         	<input type="number" name="precio" id="precio" value="" class="required"/>
+			         	<input type="number" name="precio" id="precio" class="required">
 					</div>
 			        <div data-role="fieldcontain">
-			         	<label for="origen">Origen del Producto:</label>
-			         	<input type="text" name="origen" id="origen" value="" class="required"/>
-					</div>
+			         	<label for="origen">Denominacion de Origen:</label>
+			         	<select id="origen" name="origen" class="required">
+			            	<option selected>Escoger Origen</option>
+			            </select>
+					</div>					
 			        <div data-role="fieldcontain">
 			         	<fieldset data-role="controlgroup" data-type="horizontal" >
 					    	<legend>Tipo de Producto</legend>
-			         		<input type="radio" name="tipo" id="tipo_1" value="1"/>
-			         		<label for="tipo_1">Propio</label>
-			         		<input type="radio" name="tipo" id="tipo_2" value="2"/>
-			         		<label for="tipo_2">Original</label>
+					    	<label for="tipo1">Propio</label>
+			         		<input type="radio" name="tipo" id="tipo1" value="9"/>
+			         		<label for="tipo2">Marca</label>
+			         		<input type="radio" name="tipo" id="tipo2" value="10"/>
 			   			 </fieldset>
 					</div>
 				</form>

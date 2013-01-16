@@ -1,5 +1,6 @@
 var pictureSource; 
 var destinationType;
+var facingImage = "";
 
 $(function() {
 	document.addEventListener("deviceready", onDeviceReady, false);

@@ -17,10 +17,17 @@ $("#principal").live('pageinit', function() {
 				}).form() == true) {
 					$.ajax({ 
 						type: "POST",
-						url: "http://facility.ejedigital.cl/wsfacility/services/????",
-						data: { a1 : null, a2 : "1", a3 : "", a4 : null, a5 : null, a6 : null, a7 : null, a8 : null },
+						url: "http://localhost:8080/wsfacility/services/tomaprecio/save",
+						data: { a1:competidor.value,a2:local.value,a3:punto_de_venta.value,a4:producto.value,a5:stock.value,
+								a6:precio.value,a7:fecha.value,a8:facingImage},
 						crossDomain : true,
-						success: function(data,status,jqXHR) { }
+						success: function(data,status,jqXHR) { 
+							alert("Sus datos fueron grabados con exito" + status);
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) { },
+						complete: function(data) {
+							top.location.href = "../index.html#procesos_competencia";
+						}
 					})
 				}
 	});		

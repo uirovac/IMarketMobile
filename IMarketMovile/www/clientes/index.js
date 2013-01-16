@@ -17,12 +17,46 @@ $("#principal").live('pageinit', function() {
 						}
 					}
 				}).form() == true) {
+					direccion = calle.value + ' ' + numero.value + ', ' + comuna.value + ', ' + region.value + ', ' + pais.value;
+					mostrarCoordenadas(direccion);
+					var i=0
+					var asocioeconomica = new Array();
+					$("#socioeconomica select ").each(function(index) {
+						asocioeconomica[i] = this.name + "|" + this.value;
+						alert(asocioeconomica[i++]);
+					});	
+					
+					i=0;
+					var ageografica = new Array();
+					$("#geografica select ").each(function(index) {
+						ageografica[i++] = this.name + "|" + this.value;
+					});	
+					
+					i=0
+					var ademografica = new Array();
+					$("#demografica select ").each(function(index) {
+						ademografica[i++] = this.name + "|" + this.value;
+					});	
+					
+					i=0
+					var aProducto = new Array();
+					$("#producto_servicio input ").each(function(index) {
+						aProducto[i++] = this.value;
+					});	
 					$.ajax({ 
 						type: "POST",
-						url: "http://facility.ejedigital.cl/wsfacility/services/????",
-						data: { a1 : null, a2 : "1", a3 : "", a4 : null, a5 : null, a6 : null, a7 : null, a8 : null },
+						url: "http://localhost:8080/wsfacility/services/cliente/save",
+						data: { a1:nombre.value,a2:identificacion.value,a3:correo.value,a4:telefono.value,a5:$('input:radio[name=tipo]:checked').val(),     
+								a6:posLatitud,a7:posLongitud,a8:direccion,'a9[]':aProducto,
+								'a10[]':asocioeconomica,'a11[]':ageografica,'a12[]':ademografica},
 						crossDomain : true,
-						success: function(data,status,jqXHR) { }
+						success: function(data,status,jqXHR) { 
+							alert("Sus datos fueron grabados con exito" + status);
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) { },
+						complete: function(data) {
+							top.location.href = "../index.html#procesos_competencia";
+						}
 					})
 				}
 		});			
@@ -32,7 +66,7 @@ function getProductos (data) {
 	$.each(data, function(key, val) {
 		$.each(val, function(key2, val2) {
 			html = '';
-			html += '<input type="checkbox" name="producto" id="producto_'+ val2[0].value +'" class="custom" />';
+			html += '<input type="checkbox" name="producto" id="producto_'+ val2[0].value +'" class="custom" value="'+ val2[0].value +'" />';
 			html += '<label for="producto_'+ val2[0].value +'">'+ val2[1].value +'</label>';
 			$('#producto_servicio fieldset').append(html);
 			$('#producto_' + val2[0].value).checkboxradio();
@@ -52,8 +86,8 @@ function getGeografica(data) {
 				html += '</div>';
 			}
 			html += '<div data-role="fieldcontain"  id="geografica_'+ val.a1 +'">';
-			html += '<label for="'+ val.a1 +'">'+ val.a2 +':</label>';
-			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '" class="required">';
+			html += '<label for="'+ val.a2 +'">'+ val.a2 +':</label>';
+			html += '<select id="'+ val.a2 +'" name="'+ val.a1 + '" class="required">';
 			html += '<option value="" selected>Elegir '+ val.a2 + '</option>';
 		}
 		else {
@@ -80,8 +114,8 @@ function getDemografica(data) {
 				html += '</div>';
 			}
 			html += '<div data-role="fieldcontain"  id="demografica_'+ val.a1 +'">';
-			html += '<label for="'+ val.a1 +'">'+ val.a2 +':</label>';
-			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '" class="required">';
+			html += '<label for="'+ val.a2 +'">'+ val.a2 +':</label>';
+			html += '<select id="'+ val.a2 +'" name="'+ val.a1 + '" class="required">';
 			html += '<option value="" selected>Elegir '+ val.a2 + '</option>';
 		}
 		else {
@@ -108,8 +142,8 @@ function getSocioeconomica(data) {
 				html += '</div>';
 			}
 			html += '<div data-role="fieldcontain"  id="socioeconomica'+ val.a1 +'">';
-			html += '<label for="'+ val.a1 +'">'+ val.a2 +':</label>';
-			html += '<select id="'+ val.a1 +'" name="'+ val.a2 + '" class="required">';
+			html += '<label for="'+ val.a2 +'">'+ val.a2 +':</label>';
+			html += '<select id="'+ val.a2 +'" name="'+ val.a1 + '" class="required">';
 			html += '<option value="" selected>Elegir '+ val.a2 + '</option>';
 		}
 		else {

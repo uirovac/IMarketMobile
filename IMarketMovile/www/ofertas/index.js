@@ -1,4 +1,4 @@
-$("#principal").live('pageshow', function() {
+$("#principal").live('pageinit', function() {
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p2s/querys/establecimientos",{},loadOne);
 	
 	$("#setDataToServer").click(
@@ -15,10 +15,17 @@ $("#principal").live('pageshow', function() {
 				}).form() == true) {
 					$.ajax({ 
 						type: "POST",
-						url: "http://facility.ejedigital.cl/wsfacility/services/????",
-						data: { a1 : null, a2 : "1", a3 : "", a4 : null, a5 : null, a6 : null, a7 : null, a8 : null },
+						url: "http://localhost:8080/wsfacility/services/oferta/save",
+						data: { a1:nombre.value,a2:descripcion.value,a3:fecha_inicio.value,a4:fecha_termino.value,a5:local.value,a6:punto_de_venta.value,"a7":producto.value,
+								a8:precio_base.value,a9:nuevo_precio.value,a10:facingImage},
 						crossDomain : true,
-						success: function(data,status,jqXHR) { }
+						success: function(data,status,jqXHR) { 
+							alert("Sus datos fueron grabados con exito" + status);
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) { },
+						complete: function(data) {
+							top.location.href = "index.html";
+						}
 					})
 				}
 	});	

@@ -1,5 +1,5 @@
 //Librerias
-$("#principal").live('pageshow', function() {
+$("#principal").live('pageinit', function() {
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/143",{ },getSocioeconomica);
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/59",{ },getGeografica);
 	$.getJSON("http://facility.ejedigital.cl/wsfacility/services/p1s/root/without/father/80",{ },getDemografica);
@@ -11,7 +11,6 @@ $("#principal").live('pageshow', function() {
 	$("#setDataToServer").click(
 			function() {
 				if ($('#formulario').validate({
-					//redefine la posicion del mensaje de error para los campos combobox 
 					errorPlacement: function(error, element) {
 						if ($(element).is('select')) {
 							error.insertAfter($(element).parent());
@@ -21,13 +20,26 @@ $("#principal").live('pageshow', function() {
 						}
 					}
 				}).form() == true) {
-					var direccion = document.getElementById("direccion_fisica").value;
+					var aCompetidor = new Array();
+					var i=0;
+					$('#competidores input ').each(function(index) {
+						aCompetidor[i++] = this.value;
+					});					
+					direccion = calle.value + ' ' + numero.value + ', ' + comuna.value + ', ' + region.value + ', ' + pais.value;
+					mostrarCoordenadas(direccion);
 					$.ajax({ 
 						type: "POST",
-						url: "http://facility.ejedigital.cl/wsfacility/services/upload/imgdata",
-						data: { a1 : facingImage, a2 : "1", a3 : "Nada por el momento", a4 : pto_de_vta, a5 : producto, a6 : posLatitud, a7 : posLongitud, a8 : direccion },
+						url: "http://localhost:8080/wsfacility/services/puntoventa/save",
+						data: { a1:mercado.value,a2:"1",a3:nombre.value,a4:local.value,a5:posLatitud,a6:posLongitud,a7:direccion,
+								a8:empresa.value,a9:facingImage,'a10[]':aCompetidor},
 						crossDomain : true,
-						success: function(data,status,jqXHR) { }
+						success: function(data,status,jqXHR) { 
+							alert("Sus datos fueron grabados con exito" + status);
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) { },
+						complete: function(data) {
+							top.location.href = "index.html";
+						}
 					})
 				}
 			});		
@@ -117,16 +129,26 @@ function getSocioeconomica(data) {
 }
 
 function getCompetidores (data) {
+	//Competencia
+	i=0;
 	$.each(data, function(key, val) {
 		$.each(val, function(key2, val2) {
+			i++;
 			html = '';
-			html += '<input type="checkbox" name="competidor" id="competidor_'+ val2[0].value +'" class="custom" />';
-			html += '<label for="competidor_'+ val2[0].value +'">'+ val2[1].value +'</label>';
+			html += '<input type="checkbox" name="competidor" id="competidor_'+ i +'" class="custom" value="'+ val2[0].value +'"/>';
+			html += '<label for="competidor_'+ i +'">'+ val2[1].value +'</label>';
 			$('#competidores fieldset').append(html);
 			$('#competidor_' + val2[0].value).checkboxradio();
 		});
 	});		
-	$('#principal').trigger('create');	    		
+	$('#principal').trigger('create');
+	
+	//Empresa perteneciente
+	$.each(data, function(key, val) {
+		$.each(val, function(key2, val2) {
+			$('#empresa').append($('<option>', {value : val2[0].value}).text(val2[1].value));
+		});
+	});		
 }
 
 function getMercados(data) {

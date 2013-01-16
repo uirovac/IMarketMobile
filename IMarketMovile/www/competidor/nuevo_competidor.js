@@ -14,12 +14,21 @@ $("#principal").live('pageinit', function() {
 						}
 					}
 				}).form() == true) {
+					direccion = calle.value + ' ' + numero.value + ', ' + comuna.value + ', ' + region.value + ', ' + pais.value;
+					mostrarCoordenadas(direccion);
 					$.ajax({ 
 						type: "POST",
-						url: "http://facility.ejedigital.cl/wsfacility/services/????",
-						data: { a1 : null, a2 : "1", a3 : "", a4 : null, a5 : null, a6 : null, a7 : null, a8 : null },
+						url: "http://facility.ejedigital.cl/wsfacility/services/competitor/save",
+						data: { a1:nombre.value,a2:descripcion.value,a3:local.value,a4:punto_de_venta.value,a5:producto.value,a6:representante_legal.value,a7:giro.value,a8:direccion,a9:posLatitud,a10:posLongitud },
 						crossDomain : true,
-						success: function(data,status,jqXHR) { }
+						success: function(data,status,jqXHR) { 
+							alert("Sus datos fueron grabados con exito" + status);
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) { },
+						complete: function(data) {
+							alert("Sus datos fueron grabados con exito");
+							top.location.href = "index.html";
+						}
 					})
 				}
 		});		

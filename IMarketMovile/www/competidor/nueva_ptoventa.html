@@ -3,12 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>IMarket</title>
+		<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAyzIvlogIlkdk6qqXgPcqGRRrb41JoWUZrahluOk81y-6F6GuWhTRTI6lSA2xEMpMhmGUIE4uTwXgRA" ></script>
 		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
 		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
 		<script src="../jquery-mobile/jquery.validate.min.js"></script>
 		<script src="../jquery-mobile/messages_es.js"></script>
+		<script src="../js/geolocation.js"></script>		
 		<script src="nueva_ptoventa.js"></script>
 		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jqm-icon-pack-2.1.2-fa.css">
 		<link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">
 	</head> 
 	<body> 
@@ -32,24 +35,54 @@
 			            	<option selected>Escoger Cadena</option>
 			            </select>
 					</div>
+			        <div data-role="fieldcontain">
+			         	<label for="empresa">Empresa:</label>
+			         	<select id="empresa" name="empresa" class="required">
+			            	<option selected>Escoger Empresa</option>
+			            </select>
+					</div>
 					<div data-role="fieldcontain">
 			         	<label for="nombre">Nombre:</label>
 			         	<input type="text" name="nombre" id="nombre" value="" class="required"  />
 					</div>
 			        <div data-role="fieldcontain">
-			         	<label for="ubicacion">Ubicación:</label>
-			         	<input type="text" name="ubicacion" id="ubicacion" value="" class="required"/>
+			         	<div data-role="collapsible-set">
+							<div data-role="collapsible" data-theme="b" data-content-theme="d">
+								<h3>Ubicación</h3>
+								<div data-role="fieldcontain">
+			                        <label for="calle">Calle:</label>
+			                        <input type="text" name="calle" id="calle" value="" class="required"/>
+			                    </div>
+			                    <div data-role="fieldcontain">
+			                        <label for="numero">Número:</label>
+			                        <input type="text" name="numero" id="numero" value="" class="required"/>	
+			                    </div>
+			                    <div data-role="fieldcontain">
+			                        <label for="comuna">Comuna:</label>
+			                        <input type="text" name="comuna" id="comuna" value="" class="required"/>
+			                    </div>
+			                    <div data-role="fieldcontain">
+			                        <label for="region">Región:</label>
+			                        <input type="text" name="region" id="region" value="" class="required"/>
+			                    </div>
+			                    <div data-role="fieldcontain">
+			                        <label for="pais">País:</label>
+			                        <input type="text" name="pais" id="pais" value="" class="required"/>
+			                    </div>
+			                 </div>
+			             </div>
 					</div>
-			        <div data-role="fieldcontain">
-			         	<label for="fotos">Foto:</label>
-			         	<input type="text" name="fotos" id="fotos" value=""  />
+			        <div data-role="fieldcontain" data-inline="true" style="display:inline;">
+		                <div data-role="controlgroup" data-type="horizontal" style="display:inline;">
+		                    <a href="#" data-role="button" onclick="capturePhotoEdit(Camera.PictureSourceType.CAMERA);">Fotos</a>
+		                </div>
+						<a href="#fotografia" rel="external" data-role="button" class="ui-btn-right" data-iconpos="notext" data-icon="picture">Home</a>
 					</div>
 			        <div data-role="fieldcontain">
 			    		<div data-role="collapsible-set">
 							<div data-role="collapsible"  data-theme="b" data-content-theme="d" id="competidores">
 								<h3>Competidor</h3>
-			    					<fieldset data-role="controlgroup">
-			   						</fieldset>
+			    					<fieldset data-role="controlgroup"></fieldset>
 			                 </div>
 			             </div>
 					</div>
@@ -70,5 +103,17 @@
 				<input type="button" id="setDataToServer" name="guardar" value="Guardar" class="ui-footer ui-btn-right"/>
 			</div>
 		</div>
+		<div data-role="page" id="fotografia" data-theme="b">
+			<div data-role="header">
+		    	<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>IMarket - Fotografia</h1>
+			</div>
+			<div data-role="content"  style="text-align:center">	
+				<img style="display:none;width:100px;height:100px" id="capturefacing" src="" />
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h4>&nbsp;</h4>
+			</div>
+		</div>		
 	</body>
 </html>

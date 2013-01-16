@@ -147,12 +147,29 @@ $(function() {
 	};
 
 	mostrarCoordenadas = function(calle, numero, comuna, region, pais) {
-		address = calle + ' ' + numero + ', ' + comuna + ', ' + region + '' + pais;
+		address = calle + ' ' + numero + ', ' + comuna + ', ' + region + ', ' + pais;
 		geocoder = new GClientGeocoder();
 		geocoder.getLatLng(
 		    address,
 		    function(point) {
 		        if (point !== null) {
+		            return point;
+		        }
+		        else {
+		        	return null;
+		        }
+		    }
+		);	
+	}
+	
+	mostrarCoordenadas = function(address) {
+		geocoder = new GClientGeocoder();
+		geocoder.getLatLng(
+		    address,
+		    function(point) {
+		        if (point !== null) {
+		        	posLatitud = point.lat();
+		        	posLongitud = point.lng();
 		            return point;
 		        }
 		        else {
